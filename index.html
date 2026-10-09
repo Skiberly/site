@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skiberly · Digital artist</title>
+  <meta name="description" content="Skiberly is a digital artist drawing anthro and feral characters: portraits, reference sheets and sticker packs. Commissions open.">
+  <meta name="theme-color" content="#0c1a1b">
+  <meta property="og:title" content="Skiberly · Digital artist">
+  <meta property="og:description" content="Anthro and feral character art: portraits, reference sheets and sticker packs.">
+  <meta property="og:image" content="assets/img/thumb/headshot-shaded.jpg">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="icon" type="image/png" href="assets/img/chibi.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Icon sprite (paths from Simple Icons, CC0) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></symbol>
+  <symbol id="i-fa" viewBox="0 0 24 24"><path d="M5.7 22.086c-.43-.11-1.068-.505-1.193-.74-.113-.21-.02-1.356.116-1.44.113-.07.113-.265 0-.444-.069-.109-.235-.081-.801.132-.89.335-1.195.336-1.839.01C1.348 19.282.7 18.557.273 17.690c-.45-.914-.388-1.097.518-1.538.392-.19.932-.485 1.2-.655l.485-.31-.049-.724-.05-.725.492-.525.492-.526-.185-.285-.438-.671c-.212-.323-.234-.424-.132-.615.158-.295.095-.347-.256-.213-.157.06-.33.108-.384.108-.133 0-.124-.387.016-.648.158-.296.036-.373-.221-.14-.157.141-.245.162-.331.076-.299-.299.627-2.522 1.193-2.867l.351-.214h-.447c-.247 0-.448-.04-.448-.09 0-.302 1.386-.99 2.37-1.175l.678-.128 1.169-1.878c.643-1.033 1.235-1.932 1.316-2 .313-.26.532-.028 1.471 1.548.524.879.982 1.628 1.018 1.664.037.037.371-.164.743-.446.83-.627 3.339-2.091 4.391-2.562.588-.262.817-.32.949-.237.142.09.206.518.355 2.364.1 1.24.18 2.61.177 3.045-.007 1.202.004 1.37.09 1.367.043 0 .265-.262.493-.58.702-.981.523-.945 2.491-.508l1.731.384 1.197 1.007c1.127.949 1.378 1.217 1.253 1.342-.03.029-.758.063-1.62.076-1.845.028-2.937.289-3.567.852-.328.294-.366.386-.377.907-.007.319-.009.612-.004.65.005.04.445-.114.977-.342.532-.227 1.042-.413 1.135-.413.092 0 .582.416 1.089.926l.921.925-.55 1.06-.552 1.06.5.57c.274.313.485.622.47.686-.044.179-1.023.99-1.195.99-.083 0-.151-.036-.152-.079 0-.043-.09-.228-.202-.41l-.201-.33-.718.199c-.956.265-1.105.253-1.456-.114-.358-.373-.478-.33-.478.173 0 .512-.368 1.125-.83 1.381-.409.227-2.396.944-3.438 1.24a7.784 7.784 0 0 0-1.13.43c-1.050.528-1.072.256-.089-1.108.608-.842.946-1.18 2.002-2.007.698-.547 1.29-1.068 1.316-1.16.025-.09.153-.944.284-1.896l.238-1.732-.52-.983c-.518-.978-.52-.984-.34-1.298.098-.173.16-.315.137-.315-.038 0-.784.414-.887.492-.023.018.085.132.24.255.323.253.724.99.904 1.659.137.507.04 2.034-.113 1.792-.057-.09-.09.025-.09.314-.003.465-.376 1.495-.542 1.495-.051 0-.093-.095-.093-.21 0-.117-.048-.212-.106-.212-.065 0-.081.16-.042.41l.066.41-.685-.015c-.502-.01-.738.032-.881.159-.287.253-2.584 1.447-3.396 1.766-1.069.419-1.140.494-1.498 1.602-.176.545-.389 1.096-.473 1.226-.34.521-1.547.87-2.326.67z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+  <symbol id="i-boosty" viewBox="0 0 24 24"><path d="M2.661 14.337 6.801 0h6.362L11.88 4.444l-.038.077-3.378 11.733h3.15c-1.321 3.289-2.35 5.867-3.086 7.733-5.816-.063-7.442-4.228-6.02-9.155M8.554 24l7.67-11.035h-3.25l2.83-7.073c4.852.508 7.137 4.33 5.791 8.952C20.16 19.81 14.344 24 8.68 24h-.127z"/></symbol>
+  <symbol id="i-vk" viewBox="0 0 24 24"><path d="m9.489.004.729-.003h3.564l.73.003.914.01.433.007.418.011.403.014.388.016.374.021.36.025.345.03.333.033c1.74.196 2.933.616 3.833 1.516.9.9 1.32 2.092 1.516 3.833l.034.333.029.346.025.36.02.373.025.588.012.41.013.644.009.915.004.98-.001 3.313-.003.73-.01.914-.007.433-.011.418-.014.403-.016.388-.021.374-.025.36-.03.345-.033.333c-.196 1.74-.616 2.933-1.516 3.833-.9.9-2.092 1.32-3.833 1.516l-.333.034-.346.029-.36.025-.373.02-.588.025-.41.012-.644.013-.915.009-.98.004-3.313-.001-.73-.003-.914-.01-.433-.007-.418-.011-.403-.014-.388-.016-.374-.021-.36-.025-.345-.03-.333-.033c-1.740-.196-2.933-.616-3.833-1.516-.9-.9-1.32-2.092-1.516-3.833l-.034-.333-.029-.346-.025-.36-.02-.373-.025-.588-.012-.41-.013-.644-.009-.915-.004-.98.001-3.313.003-.73.01-.914.007-.433.011-.418.014-.403.016-.388.021-.374.025-.36.03-.345.033-.333c.196-1.74.616-2.933 1.516-3.833.9-.9 2.092-1.32 3.833-1.516l.333-.034.346-.029.36-.025.373-.02.588-.025.41-.012.644-.013.915-.009ZM6.79 7.3H4.05c.13 6.24 3.25 9.99 8.72 9.99h.31v-3.57c2.01.2 3.53 1.67 4.14 3.57h2.84c-.78-2.84-2.83-4.41-4.11-5.01 1.28-.74 3.08-2.54 3.51-4.98h-2.58c-.56 1.980-2.22 3.78-3.8 3.95V7.3H10.5v6.92c-1.6-.4-3.62-2.34-3.71-6.92Z"/></symbol>
+  <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></symbol>
+  <symbol id="i-discord" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></symbol>
+  <symbol id="i-trello" viewBox="0 0 24 24"><path d="M21.147 0H2.853A2.86 2.86 0 000 2.853v18.294A2.86 2.86 0 002.853 24h18.294A2.86 2.86 0 0024 21.147V2.853A2.86 2.86 0 0021.147 0zM10.34 17.287a.953.953 0 01-.953.953h-4a.954.954 0 01-.954-.953V5.38a.953.953 0 01.954-.953h4a.954.954 0 01.953.953zm9.233-5.467a.944.944 0 01-.953.947h-4a.947.947 0 01-.953-.947V5.38a.953.953 0 01.953-.953h4a.954.954 0 01.953.953z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-cross" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="wordmark" href="#top">Skiberly</a>
+    <nav class="topnav" aria-label="Sections">
+      <a href="#commissions" data-i18n="nav.commissions">Commissions</a>
+      <a href="#references" data-i18n="nav.references">References</a>
+      <a href="#stickers" data-i18n="nav.stickers">Stickers</a>
+      <a href="#terms" data-i18n="nav.terms">Terms</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="topbar__actions">
+      <!-- Russian version is switched off for now. To bring it back, uncomment this button
+           and the i18n-ru.js script at the bottom of the page.
+      <button class="lang" type="button" id="lang-toggle" aria-label="Переключить на русский">
+        <span data-lang="en">EN</span><span data-lang="ru">RU</span>
+      </button>
+      -->
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <!-- Chalkboard backdrop: doodles are generated by js/main.js -->
+    <div class="hero__bg" aria-hidden="true"><div class="doodles"></div></div>
+    <div class="hero__text">
+      <!-- To close commissions: change data-status to "closed" -->
+      <p class="status" data-status="open">
+        <span class="status__open" data-i18n="status.open">Commissions open</span>
+        <span class="status__closed" data-i18n="status.closed">Commissions closed</span>
+      </p>
+      <h1 class="hero__title">Skiberly</h1>
+      <p class="hero__lead" data-i18n="hero.lead">Digital artist drawing anthro and feral characters: portraits, reference sheets and sticker packs.</p>
+      <!-- The only button on the page: keep it single -->
+      <a class="btn hero__form" href="https://docs.google.com/forms/d/e/1FAIpQLScxEd_jiYQS6bcjc-tM8gKqhed6eoug808mVgxrwyTG-kAi6Q/viewform" target="_blank" rel="noopener">
+        <span data-i18n="cta.form">Commission form</span>
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </a>
+      <ul class="socials" aria-label="Social links">
+        <li><a href="https://x.com/skiba_biba" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg class="icon"><use href="#i-x"/></svg></a></li>
+        <li><a href="https://www.furaffinity.net/user/skibaparker/" target="_blank" rel="noopener" aria-label="Fur Affinity"><svg class="icon"><use href="#i-fa"/></svg></a></li>
+        <li><a href="https://www.instagram.com/skiberly_005" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-instagram"/></svg></a></li>
+        <li><a href="https://boosty.to/skiberly" target="_blank" rel="noopener" aria-label="Boosty"><svg class="icon"><use href="#i-boosty"/></svg></a></li>
+        <li><a href="https://vk.com/skiberly" target="_blank" rel="noopener" aria-label="VK"><svg class="icon"><use href="#i-vk"/></svg></a></li>
+        <li><a href="https://t.me/skiberly_parker" target="_blank" rel="noopener" aria-label="Telegram"><svg class="icon"><use href="#i-telegram"/></svg></a></li>
+      </ul>
+    </div>
+
+    <div class="mascot">
+      <div class="mascot__shadow" aria-hidden="true"></div>
+      <div class="mascot__bob">
+        <img class="mascot__img" src="assets/img/chibi-large.png" alt="Skiberly's character in chibi style, with long auburn hair and green eyes" data-i18n-alt="alt.mascot" width="847" height="1236" fetchpriority="high">
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMISSIONS -->
+  <section class="section" id="commissions" aria-labelledby="commissions-h">
+    <div class="section__head">
+      <h2 id="commissions-h" data-i18n="com.title">Commissions</h2>
+      <p data-i18n="com.lead">Pick the framing, then choose flat colors or full shading. Every piece comes with a simple background.</p>
+    </div>
+
+    <div class="wall" style="--h: 380px">
+      <figure class="art" style="--r: 1.003">
+        <button type="button" class="art__frame" data-zoom>
+          <img src="assets/img/thumb/headshot-flat.jpg" data-full="assets/img/headshot-flat.jpg" alt="Dog with a tennis ball, flat colors" data-i18n-alt="alt.headFlat" width="1000" height="997" loading="lazy">
+        </button>
+        <figcaption><b data-i18n="tier.headshot">Headshot</b> <span data-i18n="style.flat">Flat colors</span></figcaption>
+      </figure>
+      <figure class="art" style="--r: 0.925">
+        <button type="button" class="art__frame" data-zoom>
+          <img src="assets/img/thumb/headshot-shaded.jpg" data-full="assets/img/headshot-shaded.jpg" alt="Fox with blue eyes on a violet background, shaded" data-i18n-alt="alt.headShaded" width="925" height="1000" loading="lazy">
+        </button>
+        <figcaption><b data-i18n="tier.headshot">Headshot</b> <span data-i18n="style.shaded">Shaded</span></figcaption>
+      </figure>
+      <figure class="art" style="--r: 0.988">
+        <button type="button" class="art__frame" data-zoom>
+          <img src="assets/img/thumb/halfbody-shaded.jpg" data-full="assets/img/halfbody-shaded.jpg" alt="Mouse and goat friends in sweaters, shaded" data-i18n-alt="alt.half" width="988" height="1000" loading="lazy">
+        </button>
+        <figcaption><b data-i18n="tier.halfbody">Halfbody</b> <span data-i18n="style.shaded">Shaded</span></figcaption>
+      </figure>
+      <figure class="art" style="--r: 0.443">
+        <button type="button" class="art__frame" data-zoom>
+          <img src="assets/img/thumb/fullbody-shaded.jpg" data-full="assets/img/fullbody-shaded.jpg" alt="Wolf with a skateboard by a brick wall, shaded" data-i18n-alt="alt.full" width="443" height="1000" loading="lazy">
+        </button>
+        <figcaption><b data-i18n="tier.fullbody">Fullbody</b> <span data-i18n="style.shaded">Shaded</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="pricing">
+      <table class="price-table">
+        <caption class="sr-only" data-i18n="com.tableCaption">Commission prices in US dollars</caption>
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col" data-i18n="style.flat">Flat colors</th>
+            <th scope="col" data-i18n="style.shaded">Shaded</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span data-i18n="tier.headshot">Headshot</span><small data-i18n="tier.headshotHint">Head and shoulders</small></th>
+            <td>$80</td><td>$120</td>
+          </tr>
+          <tr>
+            <th scope="row"><span data-i18n="tier.halfbody">Halfbody</span><small data-i18n="tier.halfbodyHint">Waist up</small></th>
+            <td>$100</td><td>$140</td>
+          </tr>
+          <tr>
+            <th scope="row"><span data-i18n="tier.fullbody">Fullbody</span><small data-i18n="tier.fullbodyHint">The whole character</small></th>
+            <td>$130</td><td>$170</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="extras">
+        <h3 data-i18n="extras.title">Extra charges</h3>
+        <dl class="list">
+          <div><dt data-i18n="extras.character">Extra character</dt><dd>+100%</dd></div>
+          <div><dt data-i18n="extras.detailed">Detailed character</dt><dd>+$50</dd></div>
+          <div><dt data-i18n="extras.background">Background</dt><dd>$30–100</dd></div>
+          <div><dt data-i18n="extras.deadline">Deadline</dt><dd>+30%</dd></div>
+          <div><dt data-i18n="extras.private">Private piece</dt><dd>+50%</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCE SHEETS -->
+  <section class="section" id="references" aria-labelledby="references-h">
+    <div class="split">
+      <div class="split__text">
+        <h2 id="references-h" data-i18n="ref.title">Reference sheets</h2>
+        <p data-i18n="ref.lead">Everything another artist needs to draw your character: poses, palette, details and the things they carry.</p>
+        <dl class="list">
+          <div><dt data-i18n="ref.main">Main pose</dt><dd>$120</dd></div>
+          <div><dt data-i18n="ref.pose">Each extra pose</dt><dd>$100</dd></div>
+          <div><dt data-i18n="ref.feral">Feral form</dt><dd>$80</dd></div>
+          <div><dt data-i18n="ref.chibis">Two chibis, front and back</dt><dd>$40</dd></div>
+          <div><dt><span data-i18n="ref.chibiClothes">Each chibi with clothes</span><small data-i18n="ref.chibiClothesHint">Depends on the outfit</small></dt><dd>$30–80</dd></div>
+          <div><dt><span data-i18n="ref.additions">Additions</span><small data-i18n="ref.additionsHint">Piercings, eyes, paws, maw and so on</small></dt><dd>$30</dd></div>
+          <div><dt data-i18n="ref.item">Each inventory item</dt><dd>$20</dd></div>
+          <div><dt data-i18n="ref.headshot">Headshot on the sheet</dt><dd>$60</dd></div>
+        </dl>
+      </div>
+
+      <div class="split__art">
+        <div class="wall wall--tight" style="--h: 220px">
+          <figure class="art" style="--r: 1.891">
+            <button type="button" class="art__frame" data-zoom>
+              <img src="assets/img/thumb/ref-1.jpg" data-full="assets/img/ref-1.jpg" alt="Reference sheet for Skumen, a border collie, with outfits and items" data-i18n-alt="alt.ref1" width="1000" height="529" loading="lazy">
+            </button>
+          </figure>
+          <figure class="art" style="--r: 1.094">
+            <button type="button" class="art__frame" data-zoom>
+              <img src="assets/img/thumb/ref-2.jpg" data-full="assets/img/ref-2.jpg" alt="Reference sheet for Dyllan Faust, a fox, front and back" data-i18n-alt="alt.ref2" width="1000" height="914" loading="lazy">
+            </button>
+          </figure>
+        </div>
+        <div class="wall wall--tight" style="--h: 220px">
+          <figure class="art" style="--r: 2.110">
+            <button type="button" class="art__frame" data-zoom>
+              <img src="assets/img/thumb/ref-3.jpg" data-full="assets/img/ref-3.jpg" alt="Reference sheet for Nardoragon, a purple dragon" data-i18n-alt="alt.ref3" width="1000" height="474" loading="lazy">
+            </button>
+          </figure>
+          <figure class="art" style="--r: 1.721">
+            <button type="button" class="art__frame" data-zoom>
+              <img src="assets/img/thumb/ref-4.jpg" data-full="assets/img/ref-4.jpg" alt="Reference sheet for Gottfried Ericsson, an African wild dog" data-i18n-alt="alt.ref4" width="1000" height="581" loading="lazy">
+            </button>
+          </figure>
+        </div>
+        <div class="wall wall--tight" style="--h: 220px">
+          <figure class="art" style="--r: 2.007">
+            <button type="button" class="art__frame" data-zoom>
+              <img src="assets/img/thumb/ref-5.jpg" data-full="assets/img/ref-5.jpg" alt="Reference sheet for Astro Sky, a blue dog, with an outfit and details" data-i18n-alt="alt.ref5" width="1000" height="498" loading="lazy">
+            </button>
+          </figure>
+          <figure class="art" style="--r: 2.071">
+            <button type="button" class="art__frame" data-zoom>
+              <img src="assets/img/thumb/ref-6.jpg" data-full="assets/img/ref-6.jpg" alt="Reference sheet for Alpe Kojot, a blue and white novabeast, with accessories" data-i18n-alt="alt.ref6" width="1000" height="483" loading="lazy">
+            </button>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKERS -->
+  <section class="section" id="stickers" aria-labelledby="stickers-h">
+    <div class="split split--flip">
+      <div class="split__art">
+        <div class="wall wall--tight" style="--h: 260px">
+          <figure class="art" style="--r: 1.441">
+            <button type="button" class="art__frame" data-zoom>
+              <img src="assets/img/thumb/stickers-1.jpg" data-full="assets/img/stickers-1.jpg" alt="Sticker pack of seven border collie emotes" data-i18n-alt="alt.st1" width="1000" height="694" loading="lazy">
+            </button>
+          </figure>
+          <figure class="art" style="--r: 1.550">
+            <button type="button" class="art__frame" data-zoom>
+              <img src="assets/img/thumb/stickers-2.jpg" data-full="assets/img/stickers-2.jpg" alt="Sticker pack of five emotes for a character with glasses" data-i18n-alt="alt.st2" width="758" height="489" loading="lazy">
+            </button>
+          </figure>
+        </div>
+      </div>
+      <div class="split__text">
+        <h2 id="stickers-h" data-i18n="st.title">Sticker packs</h2>
+        <p data-i18n="st.lead">Emotes of your character for Telegram, Discord or anywhere else you chat.</p>
+        <p class="big-price"><span>$20</span> <small data-i18n="st.unit">per sticker</small></p>
+        <p class="muted" data-i18n="st.min">Minimum three stickers, no upper limit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section" id="process" aria-labelledby="process-h">
+    <div class="section__head">
+      <h2 id="process-h" data-i18n="pr.title">How ordering works</h2>
+    </div>
+    <ol class="steps">
+      <li>
+        <h3 data-i18n="pr.s1">Send a request</h3>
+        <p data-i18n="pr.s1t">Fill in the <a href="https://docs.google.com/forms/d/e/1FAIpQLScxEd_jiYQS6bcjc-tM8gKqhed6eoug808mVgxrwyTG-kAi6Q/viewform" target="_blank" rel="noopener">commission form</a> or DM me with your character's references.</p>
+      </li>
+      <li>
+        <h3 data-i18n="pr.s2">Pay in full</h3>
+        <p data-i18n="pr.s2t">100% prepayment through <a href="https://boosty.to/skiberly" target="_blank" rel="noopener">Boosty</a>. After that you join the queue.</p>
+      </li>
+      <li>
+        <h3 data-i18n="pr.s3">Wait your turn</h3>
+        <p data-i18n="pr.s3t">One piece takes from one week to two months. Your spot is always visible on <a href="https://trello.com/b/hCLS19aq/qqueue" target="_blank" rel="noopener">Trello</a>.</p>
+      </li>
+      <li>
+        <h3 data-i18n="pr.s4">Sketch, then final</h3>
+        <p data-i18n="pr.s4t">Changes cost extra: $15 at the sketch stage, $30 on a nearly finished piece.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- WILL / WON'T -->
+  <section class="section" id="themes" aria-labelledby="themes-h">
+    <div class="section__head">
+      <h2 id="themes-h" data-i18n="th.title">What I draw</h2>
+      <p data-i18n="th.lead">Not sure your idea fits? Ask before ordering.</p>
+    </div>
+    <div class="dodont">
+      <div>
+        <h3 class="dodont__h dodont__h--yes"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span data-i18n="th.yes">Happy to draw</span></h3>
+        <ul class="tags">
+          <li data-i18n="th.y1">Anthro</li>
+          <li data-i18n="th.y2">Feral</li>
+          <li data-i18n="th.y3">Redesigns of your character</li>
+          <li data-i18n="th.y4">Custom designs</li>
+          <li data-i18n="th.y5">Detailed characters</li>
+          <li data-i18n="th.y6">Mechanisms</li>
+          <li data-i18n="th.y7">Comics</li>
+          <li data-i18n="th.y8">Sticker packs</li>
+          <li data-i18n="th.y9">Mawshots</li>
+          <li>NSFW</li>
+          <li>M+F</li>
+          <li>M+M</li>
+          <li>F+F</li>
+          <li data-i18n="th.y10">Micro / macro</li>
+          <li data-i18n="th.y11">Vore</li>
+          <li data-i18n="th.y12">Latex and BDSM</li>
+          <li data-i18n="th.y13">Gore and blood</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="dodont__h dodont__h--no"><svg class="icon" aria-hidden="true"><use href="#i-cross"/></svg><span data-i18n="th.no">Won't draw</span></h3>
+        <ul class="tags tags--no">
+          <li data-i18n="th.n1">Humans</li>
+          <li data-i18n="th.n2">Violence</li>
+          <li data-i18n="th.n3">Abuse</li>
+          <li data-i18n="th.n4">Large, complicated architecture</li>
+          <li data-i18n="th.n5">Underage characters in NSFW</li>
+          <li data-i18n="th.n6">Feral + anthro in NSFW</li>
+          <li data-i18n="th.n7">Fat fur fetish</li>
+          <li data-i18n="th.n8">Hyper fat and hyper muscular</li>
+          <li data-i18n="th.n9">Inflation</li>
+          <li data-i18n="th.n10">Multiple organs</li>
+          <li data-i18n="th.n11">Lactation and pregnancy</li>
+          <li data-i18n="th.n12">Diaper and baby fur</li>
+          <li data-i18n="th.n13">Pissing</li>
+          <li data-i18n="th.n14">Scat</li>
+          <li data-i18n="th.n15">Vomit</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERMS -->
+  <section class="section" id="terms" aria-labelledby="terms-h">
+    <div class="section__head">
+      <h2 id="terms-h" data-i18n="tos.title">Terms of service</h2>
+      <p data-i18n="tos.lead">By ordering a commission you confirm that you have read these terms and agree with them. I can cancel an order if the terms are broken.</p>
+    </div>
+    <ol class="terms">
+      <li data-i18n="tos.1"><strong>100% prepayment.</strong> You join the queue once the payment is made. I can't refund a paid order if you change your mind: this depends on the payment services I work with, not on me. Please keep it in mind before ordering.</li>
+      <li data-i18n="tos.2"><strong>No deadlines.</strong> Commissions are done in queue order, and one piece takes from one week to two months. If you need it by a specific date, the price goes up by 30%.</li>
+      <li data-i18n="tos.3"><strong>Changes are paid.</strong> Each change costs $15 at the sketch stage and $30 on a nearly finished illustration.</li>
+      <li data-i18n="tos.4"><strong>Private pieces cost +50%.</strong> Tell me before ordering if you want the drawing to stay private. Otherwise it will be published.</li>
+      <li data-i18n="tos.5"><strong>Portfolio use.</strong> I may use any illustration in my portfolio, print publications, videos and so on. This doesn't apply to private commissions. I will never recolor your commission for someone else: it's yours.</li>
+    </ol>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="contact__inner">
+      <div class="contact__text">
+        <h2 id="contact-h" data-i18n="ct.title">Contacts</h2>
+        <p data-i18n="ct.lead">To commission me, send a DM. I answer in English and Russian.</p>
+      </div>
+      <dl class="contact__list">
+        <div>
+          <dt><svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg>Telegram</dt>
+          <dd><a href="https://t.me/SkibaParkerWork" target="_blank" rel="noopener">@SkibaParkerWork</a></dd>
+        </div>
+        <div>
+          <dt><svg class="icon" aria-hidden="true"><use href="#i-discord"/></svg>Discord</dt>
+          <dd><a href="https://discord.com/users/665939424093143072/" target="_blank" rel="noopener" data-i18n="ct.discord">Direct message</a></dd>
+        </div>
+        <div>
+          <dt><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Twitter</dt>
+          <dd><a href="https://x.com/skiba_biba" target="_blank" rel="noopener">@skiba_biba</a></dd>
+        </div>
+        <div>
+          <dt><svg class="icon" aria-hidden="true"><use href="#i-boosty"/></svg><span data-i18n="ct.payment">Payment</span></dt>
+          <dd><a href="https://boosty.to/skiberly" target="_blank" rel="noopener">boosty.to/skiberly</a></dd>
+        </div>
+        <div>
+          <dt><svg class="icon" aria-hidden="true"><use href="#i-trello"/></svg><span data-i18n="ct.queue">Queue</span></dt>
+          <dd><a href="https://trello.com/b/hCLS19aq/qqueue" target="_blank" rel="noopener">Trello</a></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <p class="footer__brand">Skiberly <span>© 2026</span></p>
+    <ul class="socials socials--small" aria-label="Social links">
+      <li><a href="https://x.com/skiba_biba" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg class="icon"><use href="#i-x"/></svg></a></li>
+      <li><a href="https://www.furaffinity.net/user/skibaparker/" target="_blank" rel="noopener" aria-label="Fur Affinity"><svg class="icon"><use href="#i-fa"/></svg></a></li>
+      <li><a href="https://www.instagram.com/skiberly_005" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-instagram"/></svg></a></li>
+      <li><a href="https://boosty.to/skiberly" target="_blank" rel="noopener" aria-label="Boosty"><svg class="icon"><use href="#i-boosty"/></svg></a></li>
+      <li><a href="https://vk.com/skiberly" target="_blank" rel="noopener" aria-label="VK"><svg class="icon"><use href="#i-vk"/></svg></a></li>
+      <li><a href="https://t.me/skiberly_parker" target="_blank" rel="noopener" aria-label="Telegram"><svg class="icon"><use href="#i-telegram"/></svg></a></li>
+    </ul>
+    <p class="footer__credits">
+      <span data-i18n="ft.chibi">Chibi by</span> <a href="https://www.furaffinity.net/user/yuxare/" target="_blank" rel="noopener">Yuxare</a>
+      <span aria-hidden="true">·</span>
+      <span data-i18n="ft.banner">Banner by</span> <a href="https://www.furaffinity.net/user/hioshiru" target="_blank" rel="noopener">Hioshiru</a>
+    </p>
+  </div>
+</footer>
+
+<dialog class="viewer" id="viewer" aria-label="Artwork viewer">
+  <figure class="viewer__fig">
+    <img class="viewer__img" alt="">
+    <figcaption class="viewer__cap"></figcaption>
+  </figure>
+  <button class="viewer__btn viewer__close" type="button" data-i18n-aria="viewer.close" aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button>
+  <button class="viewer__btn viewer__prev" type="button" data-i18n-aria="viewer.prev" aria-label="Previous"><svg class="icon"><use href="#i-prev"/></svg></button>
+  <button class="viewer__btn viewer__next" type="button" data-i18n-aria="viewer.next" aria-label="Next"><svg class="icon"><use href="#i-next"/></svg></button>
+</dialog>
+
+<!-- Russian version (off for now): <script src="js/i18n-ru.js"></script> -->
+<script src="js/main.js"></script>
+</body>
+</html>
