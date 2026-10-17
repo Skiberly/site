@@ -2,11 +2,65 @@
    Skiberly · gallery-wall theme
    ========================================================================== */
 
-/* Palettes keep the same lightness steps, so contrast is identical; only the hue changes.
-   Switch with <html data-palette="...">: pine (default), indigo, plum. */
+/* Palettes. Switch with <html data-palette="...">: retro (default, light), pine, indigo, plum (dark).
+   Text tokens are tuned for >= 4.5:1 on --bg and --bg-raised; motif colours are decoration only. */
 :root,
+:root[data-palette="retro"] {
+  /* Light retro: cream paper, chocolate ink, terracotta; striped ribbons, flowers and sparkles */
+  --bg: #f6ead8;
+  --bg-raised: #fcf4e8;
+  --bg-sunken: #efdfc8;
+  --line: #e2ccb0;
+  --line-strong: #c9ad8e;
+  --text: #3a241d;
+  --text-2: #5e4235;
+  --text-3: #7a5b4a;
+  --chalk: 106 66 48;          /* ink for line doodles and the dot grid */
+  --accent: #b2451b;           /* dark enough for small text on cream */
+  --accent-hover: #983915;
+  --on-accent: #fff6ea;
+  --shadow: 92 52 34;          /* warm brown shadows instead of black */
+  --light: 255 250 240;        /* spotlight */
+  --glow: #f3a27c;
+  --rb1: #a9d2de; --rb2: #f2b6ad; --rb3: #f4d07c; --rb4: #f1a27c;
+  --fl-cream: #fcf4e8; --fl-peach: #f6c08f; --fl-caramel: #d58a4d; --fl-rust: #a85a37;
+  --fl-brown: #5a3328; --fl-pink: #f3a79c; --fl-teal: #3e9fae; --fl-outline: #5a3328;
+  --spark: #efcf92;
+  --grain-opacity: 0.1;
+  --grain-blend: multiply;
+  --sh: 0.6;                   /* shadow strength */
+  --banner-opacity: 0;         /* the dark banner reads muddy on cream; a ribbon takes its place */
+  --banner-credit: none;
+  --light-a: 0.55;
+  --panel-hi: rgb(255 252 246 / 0.6);   /* top of each block, lit from above */
+  --panel-lo: rgb(122 74 46 / 0.1);     /* bottom of each block, in shade */
+  color-scheme: light;
+}
+
+/* Shared defaults for the dark palettes */
+:root[data-palette="pine"],
+:root[data-palette="indigo"],
+:root[data-palette="plum"] {
+  --shadow: 0 0 0;
+  --light: 255 236 220;
+  --glow: var(--accent);
+  --rb1: #4f7f8c; --rb2: #9a6a66; --rb3: #a8904f; --rb4: #a8664a;
+  --fl-cream: #e8ddd0; --fl-peach: #d9a777; --fl-caramel: #b8743f; --fl-rust: #8f4c2f;
+  --fl-brown: #4a2c24; --fl-pink: #c98a82; --fl-teal: #3e9fae; --fl-outline: #e8ddd0;
+  --spark: #d9b97c;
+  --grain-opacity: 0.045;
+  --grain-blend: normal;
+  --sh: 1;
+  --banner-opacity: 0.55;
+  --banner-credit: inline;
+  --light-a: 0.05;
+  --panel-hi: rgb(255 255 255 / 0.025);
+  --panel-lo: rgb(0 0 0 / 0.28);
+  color-scheme: dark;
+}
+
 :root[data-palette="pine"] {
-  /* Deep pine teal: the complement of the orange character, echoes her green eyes */
+  /* Deep pine teal: the complement of the orange character */
   --bg: #0c1a1b;
   --bg-raised: #132527;
   --bg-sunken: #081213;
@@ -63,8 +117,6 @@
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-
-  color-scheme: dark;
 }
 
 /* ---------- Base ---------- */
@@ -93,7 +145,8 @@ body {
 body::before {
   content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.045;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--grain-blend);
 }
 
 img { display: block; max-width: 100%; height: auto; }
@@ -201,7 +254,19 @@ html[lang="ru"] .lang [data-lang="ru"] { background: var(--text); color: var(--b
   padding-left: var(--gutter); padding-right: var(--gutter);
 }
 
-.section { position: relative; isolation: isolate; padding-top: clamp(72px, 10vw, 128px); }
+.section {
+  position: relative; isolation: isolate;
+  /* gap split above and below, so the shaded edge between blocks sits mid-gap */
+  padding-top: clamp(44px, 6vw, 72px);
+  padding-bottom: clamp(44px, 6vw, 72px);
+}
+
+/* Volume: every block is a soft panel, lighter at the top and shaded towards the bottom.
+   Where one block's shade meets the next block's light, you get a gentle edge.
+   border-image with a 100vw outset paints it full-bleed without extra markup. */
+.hero, .section {
+  border-image: linear-gradient(to bottom, var(--panel-hi), transparent 28%, transparent 55%, var(--panel-lo)) fill 0 // 0 100vw;
+}
 
 /* Full-bleed backdrop behind a section, holding its doodles (created in JS) */
 .section__bg {
@@ -218,7 +283,7 @@ html[lang="ru"] .lang [data-lang="ru"] { background: var(--text); color: var(--b
   content: ""; position: absolute;
   left: calc(var(--gx, 85%) - 30vw); top: calc(var(--gy, 25%) - 30vw);
   width: 60vw; height: 60vw;
-  background: radial-gradient(closest-side, color-mix(in oklab, var(--accent) 9%, transparent), transparent);
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--glow) 14%, transparent), transparent);
 }
 .section__bg::after {
   content: ""; position: absolute; inset: 0;
@@ -267,7 +332,7 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
   display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px;
   border-radius: var(--radius);
 }
-.status__open { color: var(--accent); background: color-mix(in oklab, var(--accent) 14%, transparent); }
+.status__open { color: var(--accent-hover); background: color-mix(in oklab, var(--accent) 10%, transparent); }
 .status__closed { color: var(--text-2); background: var(--bg-raised); }
 .status[data-status="open"] .status__closed,
 .status[data-status="closed"] .status__open { display: none; }
@@ -330,8 +395,8 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
 .hero__bg::before {
   content: ""; position: absolute; inset: 0;
   background:
-    radial-gradient(38% 46% at var(--spot-x) var(--spot-y), color-mix(in oklab, var(--accent) 16%, transparent), transparent 70%),
-    radial-gradient(60% 70% at var(--spot-x) calc(var(--spot-y) - 6%), rgb(var(--chalk) / 0.05), transparent 72%);
+    radial-gradient(38% 46% at var(--spot-x) var(--spot-y), color-mix(in oklab, var(--glow) 22%, transparent), transparent 70%),
+    radial-gradient(60% 70% at var(--spot-x) calc(var(--spot-y) - 6%), rgb(var(--light) / var(--light-a)), transparent 72%);
 }
 
 /* Cutting-mat dot grid, strongest around the character */
@@ -346,23 +411,38 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
 .doodles { position: absolute; inset: 0; z-index: 1; }
 
 /* Three nested layers so the transforms never fight:
-   .doodle = position + pointer parallax (JS), .doodle__float = idle drift, path = line drawing */
+   .doodle = position + parallax (JS), .doodle__float = idle drift, svg/g = entrance and spin.
+   Kinds: --line (ink doodles that draw themselves), --fill (flowers, sparkles).
+   Ribbons (four parallel stripes) live in one .ribbons svg per backdrop, under the doodles. */
 .doodle {
   position: absolute; left: var(--x); top: var(--y);
   width: calc(var(--s) * var(--k, 1)); height: calc(var(--s) * var(--k, 1));
   margin: calc(var(--s) * var(--k, 1) / -2) 0 0 calc(var(--s) * var(--k, 1) / -2);
   color: rgb(var(--chalk) / 0.34);
 }
-.doodle--accent { color: color-mix(in oklab, var(--accent) 85%, transparent); }
+.doodle--accent { color: color-mix(in oklab, var(--accent) 70%, transparent); }
 .doodle--soft { color: rgb(var(--chalk) / 0.2); }
 
 .doodle__float { width: 100%; height: 100%; transform: rotate(var(--r)); }
 .doodle svg { width: 100%; height: 100%; overflow: visible; }
-.doodle path {
+.doodle g { transform-box: fill-box; transform-origin: center; }
+
+.doodle--line path {
   /* --sw keeps the line ~2px on screen whatever the doodle size (set in JS) */
   fill: none; stroke: currentColor; stroke-width: var(--sw, 2.2);
   stroke-linecap: round; stroke-linejoin: round;
 }
+
+/* Retro ribbons: four stripes along a wandering curve (paths built in JS, stroke-width = stripe) */
+.ribbons { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.ribbon path { fill: none; stroke-linecap: butt; stroke-linejoin: round; }
+.ribbon path:nth-child(1) { stroke: var(--rb1); }
+.ribbon path:nth-child(2) { stroke: var(--rb2); }
+.ribbon path:nth-child(3) { stroke: var(--rb3); }
+.ribbon path:nth-child(4) { stroke: var(--rb4); }
+
+/* Flowers and sparkles: flat fills, the flower centre is a hole */
+.doodle--fill path { fill: var(--fill); fill-rule: evenodd; stroke: var(--stroke, none); stroke-width: var(--sw, 0); stroke-linejoin: round; }
 
 .hero { --k: 1; }
 @media (max-width: 1100px) { .hero { --k: 0.85; } }
@@ -374,21 +454,37 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
     width: calc(var(--ms) * var(--k, 1)); height: calc(var(--ms) * var(--k, 1));
     margin: calc(var(--ms) * var(--k, 1) / -2) 0 0 calc(var(--ms) * var(--k, 1) / -2);
   }
-  .doodle path { stroke-width: var(--swm, 2.2); }
+  .doodle--line path, .doodle--fill path { stroke-width: var(--swm, var(--sw)); }
   .doodle[data-desktop] { display: none; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Line drawing: each doodle is drawn like a pen stroke */
-  .js .doodle path { stroke-dasharray: 1; stroke-dashoffset: 1; }
-  .js .doodles.is-drawn .doodle path {
+  /* Lines and ribbon stripes are drawn like pen strokes */
+  .js .doodle--line path, .js .ribbon path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .js .doodles.is-drawn .doodle--line path,
+  .js .doodles.is-drawn .ribbon path {
     stroke-dashoffset: 0;
     transition: stroke-dashoffset 900ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0ms);
   }
+  .js .doodles.is-drawn .ribbon path { transition-duration: 1800ms; transition-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  .js .doodles.is-drawn .ribbon path:nth-child(2) { transition-delay: calc(var(--delay, 0ms) + 80ms); }
+  .js .doodles.is-drawn .ribbon path:nth-child(3) { transition-delay: calc(var(--delay, 0ms) + 160ms); }
+  .js .doodles.is-drawn .ribbon path:nth-child(4) { transition-delay: calc(var(--delay, 0ms) + 240ms); }
 
-  /* Idle drift, a slow constant motion: ease-in-out, long period */
+  /* Flowers and sparkles bloom in */
+  .js .doodle--fill svg { opacity: 0; transform: scale(0.4) rotate(-40deg); }
+  .js .doodles.is-drawn .doodle--fill svg {
+    opacity: 1; transform: none;
+    transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0ms), opacity 300ms ease var(--delay, 0ms);
+  }
+
+  /* Idle: drift for everything, a slow spin for flowers, a twinkle for sparkles */
   .doodle__float { animation: drift var(--dur, 9s) ease-in-out var(--phase, 0s) infinite; }
+  .doodle--still .doodle__float { animation: none; }
+  .doodle--flower g { animation: spin var(--spin, 50s) linear infinite; }
+  .doodle--spark g { animation: twinkle var(--tw, 4s) ease-in-out var(--phase, 0s) infinite; }
   .doodles.is-offscreen .doodle__float,
+  .doodles.is-offscreen .doodle g,
   .hero.is-offscreen .mascot__bob,
   .hero.is-offscreen .mascot__shadow { animation-play-state: paused; }
 }
@@ -396,6 +492,11 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
 @keyframes drift {
   0%, 100% { transform: translate(0, 0) rotate(var(--r)); }
   50% { transform: translate(var(--dx, 0px), var(--dy, -8px)) rotate(calc(var(--r) + var(--dr, 4deg))); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes twinkle {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.72); opacity: 0.7; }
 }
 
 /* ---------- Mascot ---------- */
@@ -408,7 +509,7 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
 .mascot__img {
   width: auto; max-width: 100%;
   max-height: min(640px, calc(100dvh - 160px));
-  filter: drop-shadow(0 18px 22px rgb(0 0 0 / 0.45));
+  filter: drop-shadow(0 18px 22px rgb(var(--shadow) / calc(0.45 * var(--sh))));
   transform-origin: 50% 85%;
   transition: transform 600ms var(--ease-out);
 }
@@ -419,7 +520,7 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
   width: 52%; height: 7%;
   margin-left: -26%;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgb(0 0 0 / 0.55), transparent);
+  background: radial-gradient(closest-side, rgb(var(--shadow) / calc(0.55 * var(--sh))), transparent);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -456,7 +557,7 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
 }
 
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; min-height: 0; padding-top: 28px; padding-bottom: 0; gap: 8px; }
+  .hero { grid-template-columns: 1fr; min-height: 0; padding-top: 28px; padding-bottom: 36px; gap: 8px; }
   .mascot { margin-top: 32px; }
   .mascot__img { max-height: min(110vw, 460px); }
 }
@@ -475,7 +576,7 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
   border-radius: var(--radius); overflow: hidden;
   background: var(--bg-raised);
   cursor: zoom-in;
-  box-shadow: 0 18px 36px -18px rgb(0 0 0 / 0.7);
+  box-shadow: 0 0 0 1px var(--line), 0 18px 36px -18px rgb(var(--shadow) / calc(0.7 * var(--sh)));
 }
 .art__frame img {
   width: 100%; height: auto;
@@ -576,6 +677,154 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
   .split--flip .split__art { order: 2; }
 }
 
+/* ---------- Price calculator ---------- */
+
+.calc {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+.calc__controls { display: grid; gap: 28px; min-width: 0; }
+.calc__panel { display: grid; gap: 28px; }
+.calc__panel[hidden] { display: none; }
+
+.calc__group { border: 0; margin: 0; padding: 0; min-width: 0; }
+.calc__group legend, .field__label {
+  display: block; padding: 0; margin-bottom: 12px;
+  font-weight: 600; font-size: 0.9375rem; color: var(--text);
+}
+.field__label small, .check__text small, .calc__fixed small {
+  font-weight: 500; color: var(--text-3); font-variant-numeric: tabular-nums;
+}
+.calc__group--options { display: grid; gap: 4px; padding-top: 24px; border-top: 1px solid var(--line); }
+.calc__group--options legend { float: left; width: 100%; }
+
+.calc__row { display: flex; flex-wrap: wrap; gap: 24px 40px; }
+
+.calc__fixed {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 12px 16px; border-radius: var(--radius);
+  background: var(--bg-raised); border: 1px solid var(--line);
+  font-weight: 600;
+}
+
+/* Segmented control built on native radios */
+.seg {
+  display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+  gap: 4px; padding: 4px;
+  border: 1px solid var(--line-strong); border-radius: var(--radius);
+}
+.seg--wide { display: grid; }
+.seg label { position: relative; cursor: pointer; }
+.seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.seg span {
+  display: grid; place-items: center; text-align: center; gap: 2px;
+  min-height: 44px; height: 100%; padding: 8px 14px; border-radius: 8px;
+  color: var(--text-2); font-weight: 500; font-size: 0.9375rem; line-height: 1.25;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+.seg span b { font-weight: 600; }
+.seg span small { font-size: 0.8125rem; color: var(--text-3); font-variant-numeric: tabular-nums; transition: color 160ms ease; }
+.seg input:checked + span { background: var(--text); color: var(--bg); }
+.seg input:checked + span small { color: color-mix(in oklab, var(--bg) 70%, transparent); }
+.seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) {
+  .seg label:hover input:not(:checked) + span { background: var(--bg-raised); color: var(--text); }
+}
+
+/* Stepper: − [n] + */
+.stepper {
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--line-strong); border-radius: var(--radius);
+}
+.stepper button {
+  display: grid; place-items: center; width: 44px; height: 44px;
+  border: 0; background: none; color: var(--text-2); cursor: pointer; border-radius: 10px;
+  transition: background-color 160ms ease, color 160ms ease, transform 120ms var(--ease-out);
+}
+.stepper button:active { transform: scale(0.92); }
+.stepper button:disabled { color: var(--line-strong); cursor: default; transform: none; }
+.stepper input {
+  width: 3ch; border: 0; background: none; padding: 0;
+  color: var(--text); font: 600 1.0625rem/1 var(--font-body); text-align: center;
+  font-variant-numeric: tabular-nums; -moz-appearance: textfield; appearance: textfield;
+}
+.stepper input::-webkit-inner-spin-button, .stepper input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+@media (hover: hover) and (pointer: fine) {
+  .stepper button:not(:disabled):hover { background: var(--bg-raised); color: var(--text); }
+}
+
+/* Checkbox row */
+.check {
+  display: flex; align-items: center; gap: 12px;
+  min-height: 44px; cursor: pointer; width: fit-content;
+}
+.check input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.check__box {
+  display: grid; place-items: center; flex: none;
+  width: 22px; height: 22px; border-radius: 6px;
+  border: 1.5px solid var(--line-strong); color: transparent;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+.check__box .icon { width: 16px; height: 16px; }
+.check input:checked + .check__box { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.check input:focus-visible + .check__box { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (hover: hover) and (pointer: fine) {
+  .check:hover .check__box { border-color: var(--text-3); }
+}
+
+/* Summary card */
+.calc__summary {
+  position: sticky; top: 88px;
+  padding: clamp(20px, 3vw, 28px);
+  border-radius: var(--radius);
+  background: var(--bg-raised); border: 1px solid var(--line);
+  box-shadow: 0 24px 48px -24px rgb(var(--shadow) / calc(0.55 * var(--sh)));
+}
+.calc__lines { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 8px; }
+.calc__lines li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  font-size: 0.9375rem; color: var(--text-2);
+}
+.calc__lines li span:last-child { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.calc__total-label { padding-top: 16px; border-top: 1px solid var(--line-strong); font-size: 0.875rem; color: var(--text-3); }
+.calc__total { margin-top: 4px; }
+.calc__total output {
+  font-family: var(--font-display); font-weight: 600; letter-spacing: -0.03em;
+  font-size: clamp(2.25rem, 1.8rem + 1.6vw, 3rem); line-height: 1.1;
+  color: var(--accent); font-variant-numeric: tabular-nums;
+}
+.calc__note {
+  display: flex; gap: 10px; align-items: flex-start;
+  margin-top: 16px; padding: 12px 14px;
+  border-radius: 10px; background: var(--bg-sunken); border: 1px solid var(--line);
+  font-size: 0.875rem; line-height: 1.5; color: var(--text-2);
+}
+.calc__note .icon { width: 18px; height: 18px; margin-top: 1px; color: var(--text-3); }
+.calc__note strong { color: var(--text); font-weight: 600; }
+
+.calc__copy {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; min-height: 48px; margin-top: 20px; padding: 0 18px;
+  border: 1px solid var(--line-strong); border-radius: var(--radius);
+  background: transparent; color: var(--text);
+  font-weight: 600; font-size: 1rem; cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 140ms var(--ease-out);
+}
+.calc__copy:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) {
+  .calc__copy:hover { background: var(--bg); border-color: var(--text-3); }
+}
+.calc__status { min-height: 1.4em; margin-top: 10px; font-size: 0.875rem; color: var(--text-2); text-align: center; }
+
+@media (max-width: 860px) {
+  .calc { grid-template-columns: 1fr; }
+  .calc__summary { position: static; }
+  .seg--wide { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); }
+}
+
 /* ---------- Process ---------- */
 
 .steps {
@@ -638,7 +887,6 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
 
 .contact {
   position: relative; isolation: isolate; overflow: hidden;
-  margin-top: clamp(96px, 12vw, 160px);
   padding: clamp(80px, 12vw, 140px) 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -646,8 +894,9 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
 .contact::before {
   content: ""; position: absolute; inset: 0; z-index: -2;
   background: url("../assets/img/banner.jpg") center 35% / cover no-repeat;
-  opacity: 0.55;
+  opacity: var(--banner-opacity);
 }
+.credit-banner { display: var(--banner-credit); }
 .contact::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background:
@@ -703,7 +952,8 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
   background: transparent; color: var(--text);
   overflow: hidden;
 }
-.viewer::backdrop { background: color-mix(in oklab, var(--bg-sunken) 94%, transparent); }
+/* The viewer is always a dark scrim, whatever the palette: art reads best on dark */
+.viewer::backdrop { background: rgb(28 18 14 / 0.94); }
 
 .viewer[open] { display: grid; place-items: center; }
 
@@ -718,12 +968,11 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
   border-radius: var(--radius);
   box-shadow: 0 30px 80px -20px rgb(0 0 0 / 0.8);
 }
-.viewer__cap { font-size: 0.9375rem; color: var(--text-2); text-align: center; max-width: 60ch; }
 
 .viewer__btn {
   position: fixed; display: grid; place-items: center;
   width: 48px; height: 48px; border-radius: var(--radius);
-  border: 1px solid var(--line-strong); background: color-mix(in oklab, var(--bg-raised) 80%, transparent);
+  border: 1px solid rgb(246 234 216 / 0.22); background: rgb(40 27 21 / 0.8); color: #f6ead8;
   cursor: pointer;
   transition: background-color 160ms ease, transform 140ms var(--ease-out);
 }
@@ -734,7 +983,7 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
 .viewer__next { right: 14px; top: 50%; margin-top: -24px; }
 .viewer__prev:active, .viewer__next:active { transform: scale(0.95); }
 @media (hover: hover) and (pointer: fine) {
-  .viewer__btn:hover { background: var(--bg-raised); }
+  .viewer__btn:hover { background: rgb(64 44 35 / 0.95); }
 }
 
 @media (max-width: 640px) {
