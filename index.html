@@ -177,49 +177,49 @@
 
   <!-- REFERENCE SHEETS -->
   <section class="section" id="references" aria-labelledby="references-h">
-    <div class="split">
-      <div class="split__text">
-        <h2 id="references-h" data-i18n="ref.title">Reference sheets</h2>
-        <p data-i18n="ref.lead">Everything another artist needs to draw your character: poses, palette, details and the things they carry.</p>
-        <dl class="list">
-          <div><dt data-i18n="ref.main">Main pose</dt><dd data-price="ref-main">$120</dd></div>
-          <div><dt data-i18n="ref.pose">Each extra pose</dt><dd data-price="ref-pose">$100</dd></div>
-          <div><dt data-i18n="ref.feral">Feral form</dt><dd data-price="ref-feral">$80</dd></div>
-          <div><dt data-i18n="ref.chibis">Two chibis, front and back</dt><dd data-price="ref-chibis">$40</dd></div>
-          <div><dt><span data-i18n="ref.chibiClothes">Each chibi with clothes</span><small data-i18n="ref.chibiClothesHint">Depends on the outfit</small></dt><dd data-price="ref-chibi-clothes">$30–80</dd></div>
-          <div><dt><span data-i18n="ref.additions">Additions</span><small data-i18n="ref.additionsHint">Piercings, eyes, paws, maw and so on</small></dt><dd data-price="ref-additions">$30</dd></div>
-          <div><dt data-i18n="ref.item">Each inventory item</dt><dd data-price="ref-item">$20</dd></div>
-          <div><dt data-i18n="ref.headshot">Headshot on the sheet</dt><dd data-price="ref-headshot">$60</dd></div>
-        </dl>
-      </div>
+    <div class="section__head">
+      <h2 id="references-h" data-i18n="ref.title">Reference sheets</h2>
+      <p data-i18n="ref.lead">Everything another artist needs to draw your character: poses, palette, details and the things they carry.</p>
+    </div>
 
-      <div class="split__art">
-        <div class="wall wall--tight" style="--h: 220px">
+    <!-- 2x2 grid across the full width; each row shares one height (like the commissions wall) -->
+    <div class="ref-grid">
+      <div class="wall wall--grid">
           <figure class="art" style="--r: 1.891">
             <button type="button" class="art__frame" data-zoom>
-              <img src="assets/img/thumb/ref-1.jpg" data-full="assets/img/ref-1.jpg" alt="Reference sheet commission" data-i18n-alt="alt.ref1" width="1000" height="529" loading="lazy">
+              <img src="assets/img/thumb/ref-1.jpg" srcset="assets/img/thumb/ref-1.jpg 1000w, assets/img/ref-1.jpg 2160w" sizes="(max-width: 860px) 100vw, 640px" data-full="assets/img/ref-1.jpg" alt="Reference sheet commission" data-i18n-alt="alt.ref1" width="1000" height="529" loading="lazy">
             </button>
           </figure>
-          <figure class="art" style="--r: 2.110">
+          <figure class="art" style="--r: 2.11">
             <button type="button" class="art__frame" data-zoom>
-              <img src="assets/img/thumb/ref-3.jpg" data-full="assets/img/ref-3.jpg" alt="Reference sheet commission" data-i18n-alt="alt.ref3" width="1000" height="474" loading="lazy">
+              <img src="assets/img/thumb/ref-3.jpg" srcset="assets/img/thumb/ref-3.jpg 1000w, assets/img/ref-3.jpg 2160w" sizes="(max-width: 860px) 100vw, 640px" data-full="assets/img/ref-3.jpg" alt="Reference sheet commission" data-i18n-alt="alt.ref3" width="1000" height="474" loading="lazy">
             </button>
           </figure>
-        </div>
-        <div class="wall wall--tight" style="--h: 220px">
+      </div>
+      <div class="wall wall--grid">
           <figure class="art" style="--r: 2.007">
             <button type="button" class="art__frame" data-zoom>
-              <img src="assets/img/thumb/ref-5.jpg" data-full="assets/img/ref-5.jpg" alt="Reference sheet commission" data-i18n-alt="alt.ref5" width="1000" height="498" loading="lazy">
+              <img src="assets/img/thumb/ref-5.jpg" srcset="assets/img/thumb/ref-5.jpg 1000w, assets/img/ref-5.jpg 2160w" sizes="(max-width: 860px) 100vw, 640px" data-full="assets/img/ref-5.jpg" alt="Reference sheet commission" data-i18n-alt="alt.ref5" width="1000" height="498" loading="lazy">
             </button>
           </figure>
           <figure class="art" style="--r: 2.071">
             <button type="button" class="art__frame" data-zoom>
-              <img src="assets/img/thumb/ref-6.jpg" data-full="assets/img/ref-6.jpg" alt="Reference sheet commission" data-i18n-alt="alt.ref6" width="1000" height="483" loading="lazy">
+              <img src="assets/img/thumb/ref-6.jpg" srcset="assets/img/thumb/ref-6.jpg 1000w, assets/img/ref-6.jpg 2160w" sizes="(max-width: 860px) 100vw, 640px" data-full="assets/img/ref-6.jpg" alt="Reference sheet commission" data-i18n-alt="alt.ref6" width="1000" height="483" loading="lazy">
             </button>
           </figure>
-        </div>
       </div>
     </div>
+
+    <dl class="list list--cols">
+      <div><dt data-i18n="ref.main">Main pose</dt><dd data-price="ref-main">$120</dd></div>
+      <div><dt data-i18n="ref.pose">Each extra pose</dt><dd data-price="ref-pose">$100</dd></div>
+      <div><dt data-i18n="ref.feral">Feral form</dt><dd data-price="ref-feral">$80</dd></div>
+      <div><dt data-i18n="ref.chibis">Two chibis, front and back</dt><dd data-price="ref-chibis">$40</dd></div>
+      <div><dt><span data-i18n="ref.chibiClothes">Each chibi with clothes</span><small data-i18n="ref.chibiClothesHint">Depends on the outfit</small></dt><dd data-price="ref-chibi-clothes">$30–80</dd></div>
+      <div><dt><span data-i18n="ref.additions">Additions</span><small data-i18n="ref.additionsHint">Piercings, eyes, paws, maw and so on</small></dt><dd data-price="ref-additions">$30</dd></div>
+      <div><dt data-i18n="ref.item">Each inventory item</dt><dd data-price="ref-item">$20</dd></div>
+      <div><dt data-i18n="ref.headshot">Headshot on the sheet</dt><dd data-price="ref-headshot">$60</dd></div>
+    </dl>
   </section>
 
   <!-- STICKERS -->

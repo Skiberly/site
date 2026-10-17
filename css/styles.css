@@ -660,8 +660,27 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
 .split__text p { margin-top: 14px; color: var(--text-2); max-width: 46ch; }
 .split__text .list { margin-top: 28px; }
 .split__art { min-width: 0; }
-@media (min-width: 861px) {
-  .split:not(.split--flip) .split__art { position: sticky; top: 96px; }
+/* References: a 2x2 grid across the full width (each row shares one height),
+   then the price list in two columns, mirroring the commissions section */
+.ref-grid { display: grid; gap: clamp(16px, 2vw, 24px); }
+.list--cols {
+  display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(32px, 6vw, 96px);
+  margin-top: clamp(40px, 6vw, 64px);
+}
+.list.list--cols > div { border-top: 0; border-bottom: 1px solid var(--line); }
+.list.list--cols > div:nth-child(-n + 2) { border-top: 1px solid var(--line); }
+
+@media (max-width: 720px) {
+  /* phones: one sheet per row at full width instead of a sideways scroller */
+  .wall--grid {
+    flex-direction: column; overflow: visible; scroll-snap-type: none;
+    margin-left: 0; margin-right: 0; padding: 0;
+  }
+  .wall--grid .art { width: 100%; max-width: none; }
+}
+@media (max-width: 760px) {
+  .list--cols { grid-template-columns: 1fr; }
+  .list.list--cols > div:nth-child(2) { border-top: 0; }
 }
 
 .big-price { display: flex; align-items: baseline; gap: 10px; margin-top: 28px !important; color: var(--text) !important; }
