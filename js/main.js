@@ -8,10 +8,8 @@
   // English lives in the HTML; remember it so we can switch back.
   const textNodes = [...document.querySelectorAll('[data-i18n]')];
   const ariaNodes = [...document.querySelectorAll('[data-i18n-aria]')];
-  const altNodes = [...document.querySelectorAll('[data-i18n-alt]')];
   textNodes.forEach((el) => { el._en = el.innerHTML; });
   ariaNodes.forEach((el) => { el._en = el.getAttribute('aria-label'); });
-  altNodes.forEach((el) => { el._en = el.getAttribute('alt'); });
 
   const meta = {
     title: document.title,
@@ -30,10 +28,6 @@
     ariaNodes.forEach((el) => {
       const key = el.dataset.i18nAria;
       el.setAttribute('aria-label', ru && RU[key] != null ? RU[key] : el._en);
-    });
-    altNodes.forEach((el) => {
-      const key = el.dataset.i18nAlt;
-      el.setAttribute('alt', ru && RU[key] != null ? RU[key] : el._en);
     });
     document.title = ru && RU['meta.title'] ? RU['meta.title'] : meta.title;
     document.querySelector('meta[name="description"]').content =
@@ -75,7 +69,6 @@
   // sparkles, stars, emphasis marks, wifi, vinyl, paws. 48x48 viewBox, drawn as single strokes.
   const SHAPES = {
     sparkle: 'M24 5C25.4 17 31 22.6 43 24 31 25.4 25.4 31 24 43 22.6 31 17 25.4 5 24 17 22.6 22.6 17 24 5Z',
-    star: 'M24 6.5 28.8 18.6 41.5 19.6 31.8 27.9 34.9 40.5 24 33.7 13.1 40.5 16.2 27.9 6.5 19.6 19.2 18.6Z',
     heart: 'M24 39.5C12.5 31 6.2 24 8.6 15.8 10.8 8.6 19.4 8.4 24 16 28.6 8.4 37.2 8.6 39.4 15.8 41.8 24 35.5 31 24 39.5Z',
     // main pad + four closed, mirror-symmetric toes (tilted ellipses)
     paw: 'M14.5 33.5C14.2 27 19 23.5 24 23.5S33.8 27 33.5 33.5C33.3 38 28.6 39.6 24 37.4 19.4 39.6 14.7 38 14.5 33.5Z'
@@ -84,18 +77,11 @@
       + 'M25.33 12.06A3.2 4.1 8 1 0 31.67 12.95A3.2 4.1 8 1 0 25.33 12.06Z'
       + 'M33.68 19.47A3 3.9 20 1 0 39.32 21.53A3 3.9 20 1 0 33.68 19.47Z',
     squiggle: 'M4 28C8 19 12.5 19 15 27.5S21.5 37 25 28 31.5 18.5 35 27.5 41 36 44.5 26',
-    spiral: 'M24.5 24.5C24 21.5 28.5 21 28.8 24.6 29.2 29 22.4 30.4 20.2 25.6 17.6 19.8 25 15.2 31 18.8 37.6 22.8 35.6 34 26.4 36 15.8 38.4 9.6 28.6 13.4 19.4',
     zigzag: 'M4 31 11 18 18 31 25 18 32 31 39 18 44 27',
-    circle: 'M37.5 16C42.5 25 38 38.5 25 40 12.5 41.5 6 32 8 21.5 10 11.5 21 6 31 8.5 37 10 41 15.5 40.5 22',
     triangle: 'M24.5 8.5 40.5 37.5 7.5 38 25.5 7',
-    plus: 'M24 11V37M11 24H37',
-    crescent: 'M31 7.5C18.5 9.5 11.5 21.5 15.5 32.5 19.5 42.5 33 44 40.5 37 30 37.5 21.5 30.5 21.5 21 21.5 15 25 10.5 31 7.5Z',
     emphasis: 'M30 8 26 19M42 18 32 24M44 34 33 32',
     wifi: 'M8 21C17 12 31 12 40 21M13.5 27C20 21 28 21 34.5 27M19 33C22 30.5 26 30.5 29 33M24 39.2V39.4',
-    vinyl: 'M24 5.5C34.5 5.5 42.5 13.5 42.5 24S34.5 42.5 24 42.5 5.5 34.5 5.5 24 13.5 5.5 24 5.5ZM24 17.5C27.6 17.5 30.5 20.4 30.5 24S27.6 30.5 24 30.5 17.5 27.6 17.5 24 20.4 17.5 24 17.5ZM24 23.6V24.4M33 11.5C36 13.5 38 16 39 19',
     dots: 'M10 30V30.2M22 22V22.2M34 30V30.2M28 12V12.2',
-    // loose chalk loop around the character, overshooting where it closes
-    ring: 'M38.5 9.5C45.5 16 46.5 29.5 39.5 37.8 32 46.2 15.6 46 8.4 37.6 1.6 29.6 2.6 15.4 11.4 8.6 19.6 2.4 32.6 2.6 41.6 9.8 43.4 11.4 44.6 13 45.4 14.6',
   };
 
   // Positions are % of each backdrop (full viewport width). mx/my: phone position, omit to hide on

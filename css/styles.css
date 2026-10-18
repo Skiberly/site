@@ -480,7 +480,6 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; font-weight: 600; }
 
   /* Idle: drift for everything, a slow spin for flowers, a twinkle for sparkles */
   .doodle__float { animation: drift var(--dur, 9s) ease-in-out var(--phase, 0s) infinite; }
-  .doodle--still .doodle__float { animation: none; }
   .doodle--flower g { animation: spin var(--spin, 50s) linear infinite; }
   .doodle--spark g { animation: twinkle var(--tw, 4s) ease-in-out var(--phase, 0s) infinite; }
   .doodles.is-offscreen .doodle__float,
